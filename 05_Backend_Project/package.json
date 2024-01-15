@@ -2,14 +2,18 @@
   "name": "05_backend_project",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "nodemon scr/index.js"
   },
   "keywords": [
     "javascript",
     "backend"
   ],
   "author": "Bhavesh",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
 }
