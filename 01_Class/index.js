@@ -46,10 +46,6 @@ app.get('/youtube', (req, res) => {
     res.send('Welcome to Youtube')
 });
 
-app.get('/facebook', (req, res) => {
-    res.send('This is FB page!!')
-});
-
 app.get('/about', (req, res) => {
     res.send('<h1>This is the About Page!!</h1>')
 });
