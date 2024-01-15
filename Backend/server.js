@@ -42,6 +42,11 @@ app.get('/api/jokes', (req, res) => {
             id: 6,
             title: 'My Data',
             content: 'Hi i am Jone i am a  Docter.'
+        },
+        {
+            id: 7,
+            title: 'Holi',
+            content: 'Hamare yaha pr Holi ko badi hi dhum dham se manaya jata hai'
         }
     ];
     res.send(jokes);
