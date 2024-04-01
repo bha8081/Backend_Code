@@ -1,5 +1,5 @@
-import {v2 as cloudinary} from "cloudinary"
-import fs from "fs"
+import {v2 as cloudinary} from "cloudinary";
+import fs from "fs";
 
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -9,21 +9,50 @@ cloudinary.config({
 
 const uploadOnCloudinary = async (localFilePath) => {
     try {
-        if (!localFilePath) return null
-        // Upload the file on Cloudinary
+        if (!localFilePath) return null;
+        // upload file on cloudinary
         const response = await cloudinary.uploader.upload(localFilePath, {
-            resource_type: "auto"
-        })
-        // File has been uploaded successfull
-        //console.log("file is uploaded on cloudinary", response.url);
-
-        fs.unlinkSync(localFilePath)
+            resource_type: "auto",
+        });
+        fs.unlinkSync(localFilePath);
         return response;
-
     } catch (error) {
-        fs.unlinkSync(localFilePath) //remove the locally saved temporary file as the upload operation got failed
+        fs.unlinkSync(localFilePath);
+
         return null;
     }
-}
+};
 
-export {uploadOnCloudinary}
+const deleteFromCloudinary = async (publicId) => {
+    try {
+        if (!publicId) return null;
+        // Delete the resource using the public Id.
+        const deletionResult = await cloudinary.uploader.destroy(publicId, {
+            resource_type: "image",
+        });
+        return deletionResult;
+    } catch (error) {
+        console.log("Error while deleting from Cloudinary: ", error);
+        return null;
+    }
+};
+
+const deleteVideoFromCloudinary = async (publicId) => {
+    try {
+        if (!publicId) return null;
+        // Delete the resource using the public Id.
+        const deletionResult = await cloudinary.uploader.destroy(publicId, {
+            resource_type: "video",
+        });
+        return deletionResult;
+    } catch (error) {
+        console.log("Error while deleting from cloudinary: ", error);
+        return null;
+    }
+};
+
+export {
+    uploadOnCloudinary,
+    deleteFromCloudinary,
+    deleteVideoFromCloudinary
+};
