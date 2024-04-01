@@ -120,4 +120,4 @@ export {
     addComment,
     updateComment,
     deleteComment
-}
+};
