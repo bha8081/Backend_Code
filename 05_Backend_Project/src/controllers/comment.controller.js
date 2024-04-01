@@ -95,7 +95,7 @@ const updateComment = asyncHandler(async (req, res) => {
 
 });
 
-// TODO: delete a comment
+// TODO: delete a comment.
 const deleteComment = asyncHandler(async (req, res) => {
     const { commentId } = req.params
     if (!commentId?.trim()) {
